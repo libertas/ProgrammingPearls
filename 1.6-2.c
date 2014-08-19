@@ -23,15 +23,8 @@ int printstring()
         int *p;
         p = string + i;
         for(int j = 0; j < BITSPERWORD; j++)
-        {
-            int tmp, tmp1;
-            tmp = *p;
-            tmp1 = (tmp << ((BITSPERWORD - 1) - j));
-            if(tmp1 >> (BITSPERWORD - 1))
-            {
+            if((*p >> j) & 1) 
                 printf("%d ", i * BITSPERWORD + j);
-            }
-        }
     }
     printf("\n");
     return 0;
