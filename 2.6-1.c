@@ -22,8 +22,16 @@ int sort(char *str)
 
 int main()
 {
-    char trial[] = "acdefgab";
-    sort(trial);
-    printf("%s\n",trial);
+    char input[LENGTH], word[LENGTH], tmp[LENGTH];
+    FILE *dict;
+    dict = fopen("2.6-1.dict", "r");
+    scanf("%s", input);
+    sort(input);
+    for(; fscanf(dict, "%s", word) != EOF; )
+    {
+        strcpy(tmp, word);
+        sort(tmp);
+        if(strcmp(input, tmp) == 0) printf("%s\n", word);
+    }
     return 0;
 }
